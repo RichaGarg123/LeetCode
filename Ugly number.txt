@@ -1,0 +1,20 @@
+public class Solution {
+    public bool IsUgly(int num) {
+      if(num<=0)
+      return false;
+      //logic: if a number is ugly then it will only be divisible by 2,3 and 5 so go on dividing the number by each of these three digits
+      //till it is possible, if ugly then the number will reduce to 1 and if not which will be the case if is it divisible by any other prime number too then it wont reduce to 1.
+      while(num%2==0)
+      num=num/2;
+      while(num%3==0)
+      num=num/3;
+      while(num%5==0)
+      num=num/5;
+      if(num==1)
+      return true;
+      else
+      return false;
+       
+    }
+    
+}

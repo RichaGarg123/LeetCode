@@ -1,0 +1,42 @@
+public class Solution {
+    public bool IsIsomorphic(string s, string t) {
+        if(string.IsNullOrWhiteSpace(s) && string.IsNullOrWhiteSpace(t))
+        return true;
+        if(string.IsNullOrWhiteSpace(s) && !string.IsNullOrWhiteSpace(t))
+        return false;
+        if(!string.IsNullOrWhiteSpace(s) && string.IsNullOrWhiteSpace(t))
+        return false;
+        int length1= s.Length;
+        int length2= t.Length;
+        if(length1 != length2)
+        return false;
+        else
+        {
+            int flag=0;
+            Dictionary<char, char> char_map= new Dictionary<char,char>();
+            char[] str1toChar= s.ToCharArray();
+            char[] str2toChar= t.ToCharArray();
+            for(int i=0; i<length1; i++)
+            {
+                if(!(char_map.ContainsKey(str1toChar[i])) && !(char_map.ContainsValue(str2toChar[i])))
+                char_map.Add(str1toChar[i],str2toChar[i]);
+                else
+                if(!(char_map.ContainsKey(str1toChar[i])) && (char_map.ContainsValue(str2toChar[i])))
+                return false;
+                else
+                {
+                    if(!(char_map[str1toChar[i]]==str2toChar[i]))
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag==1)
+            return false;
+            else
+            return true;
+        }
+        
+    }
+}

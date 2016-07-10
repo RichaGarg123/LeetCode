@@ -1,0 +1,98 @@
+public class Solution {
+    public bool IsValidSudoku(char[,] board) {
+        
+        for(int i=0; i<9; i++)
+        {
+            Dictionary<char, int> sudokugrid_row= new Dictionary<char, int>();
+            Dictionary<char, int> sudokugrid_col= new Dictionary<char, int>();
+            
+            for(int j=0; j<9; j++)
+            {
+                //checking all rows
+                if(board[i,j] !='.' && sudokugrid_row.ContainsKey(board[i,j]))
+                return false;
+                if(board[i,j] !='.' && !(sudokugrid_row.ContainsKey(board[i,j])))
+                sudokugrid_row.Add(board[i,j],1);
+                
+                //checking all columns
+                if(board[j,i] !='.' && sudokugrid_col.ContainsKey(board[j,i]))
+                return false;
+                if(board[j,i] !='.' && !(sudokugrid_col.ContainsKey(board[j,i])))
+                sudokugrid_col.Add(board[j,i],1);
+                
+                
+            }
+            
+        }
+            //checking 3x3 grid, all rows columns 0-2
+            int k=0;
+            while(k<9)
+            {
+                int j=k+2;
+                Dictionary<char, int> sudokugrid= new Dictionary<char, int>();
+                for(int i=k; i<=j; i++)
+                {   int a=0;
+                    while(a<=2)
+                    {
+                        
+                          //checking all grids all rows columns 0-2
+                          if(board[i,a] !='.' && sudokugrid.ContainsKey(board[i,a]))
+                          return false;
+                          if(board[i,a] !='.' && !(sudokugrid.ContainsKey(board[i,a])))
+                          sudokugrid.Add(board[i,a],1);
+                        
+                        a=a+1;
+                    }
+                }
+                k=k+3;
+            }
+            //checking 3x3 grid, all rows columns 3-5
+              k=0;
+            while(k<9)
+            {
+                int j=k+2;
+                Dictionary<char, int> sudokugrid= new Dictionary<char, int>();
+                for(int i=k; i<=j; i++)
+                {   int  a=3;
+                    while(a<=5)
+                    {
+                        
+                          //checking all grids all rows columns 3-5
+                          if(board[i,a] !='.' && sudokugrid.ContainsKey(board[i,a]))
+                          return false;
+                          if(board[i,a] !='.' && !(sudokugrid.ContainsKey(board[i,a])))
+                          sudokugrid.Add(board[i,a],1);
+                        
+                        a=a+1;
+                    }
+                }
+                k=k+3;
+            }
+            
+            //checking 3x3 grid, all rows columns 6-8
+              k=0;
+            while(k<9)
+            {
+                int j=k+2;
+                Dictionary<char, int> sudokugrid= new Dictionary<char, int>();
+                for(int i=k; i<=j; i++)
+                {  int  a=6;
+                    while(a<=8)
+                    {
+                        
+                          //checking all grids all rows columns 6-8
+                          if(board[i,a] !='.' && sudokugrid.ContainsKey(board[i,a]))
+                          return false;
+                          if(board[i,a] !='.' && !(sudokugrid.ContainsKey(board[i,a])))
+                          sudokugrid.Add(board[i,a],1);
+                        
+                        a=a+1;
+                    }
+                }
+                k=k+3;
+            }
+            return true;
+        }
+        
+   
+}

@@ -1,0 +1,72 @@
+public class Solution {
+    public string IntToRoman(int num) {
+        //using the rule of subtraction
+        StringBuilder str= new StringBuilder();
+        while(num-1000>=0)
+        {
+            num=num-1000;
+            str.Append("M");
+        }
+        while(num-900>=0)
+        {
+            num=num-900;
+            str.Append("CM");
+        }
+        while(num-500>=0)
+        {
+            num=num-500;
+            str.Append("D");
+        }
+         while(num-400>=0)
+        {
+            num=num-400;
+            str.Append("CD");
+        }
+        while(num-100>=0)
+        {
+            num=num-100;
+            str.Append("C");
+        }
+        while(num-90>=0)
+        {
+            num=num-90;
+            str.Append("XC");
+        }
+        while(num-50>=0)
+        {
+            num=num-50;
+            str.Append("L");
+        }
+        while(num-40>=0)
+        {
+            num=num-40;
+            str.Append("XL");
+        }
+        while(num-10>=0)
+        {
+            num=num-10;
+            str.Append("X");
+        }
+         while(num-9>=0)
+        {
+            num=num-10;
+            str.Append("IX");
+        }
+        while(num-5>=0)
+        {
+            num=num-5;
+            str.Append("V");
+        }
+        while(num-4>=0)
+        {
+            num=num-4;
+            str.Append("IV");
+        }
+        while(num-1>=0)
+        {
+            num=num-1;
+            str.Append("I");
+        }
+        return str.ToString();
+    }
+}

@@ -1,0 +1,20 @@
+public class Solution {
+    public int StrStr(string haystack, string needle) {
+        if(string.IsNullOrWhiteSpace(needle))
+        return 0;
+        int n= needle.Length;
+        int h=haystack.Length;
+        int index=-1;
+        for(int i=0; i<=h-n; i++)
+        {
+            string subHayStack= haystack.Substring(i,n);
+            if(subHayStack.Equals(needle, StringComparison.InvariantCultureIgnoreCase))
+            {
+                index= i;
+                break;
+            }
+        }
+        return index;
+        
+    }
+}

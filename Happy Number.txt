@@ -1,0 +1,46 @@
+public class Solution {
+    public bool IsHappy(int n) {
+        int digitcount=0;
+       int happynum= SquareDigits(n, out digitcount);
+       if(digitcount==1 && happynum!=1)
+       {
+        int temp=Convert.ToInt32(Math.Pow(happynum,2));
+        int count=0;
+        while(temp>0)
+        {
+            temp=temp/10;
+            digitcount++;
+            
+        }
+       }
+       while(digitcount>1)
+       {
+           digitcount=0;
+           happynum=SquareDigits(happynum, out digitcount);
+       }
+        if(happynum==1)
+        return true;
+        else
+        return false;
+    }
+    public int SquareDigits(int n, out int digitCount)
+    {
+        
+        int sum=0;
+        digitCount=0;
+        while(n>0)
+        {
+            sum=sum+ Convert.ToInt32(Math.Pow(n%10,2));
+            n=n/10;
+            
+            
+        }
+        int temp=sum;
+        while(temp>0)
+        {
+            digitCount++;
+            temp=temp/10;
+        }
+        return sum;
+    }
+}

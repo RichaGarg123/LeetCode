@@ -1,0 +1,37 @@
+public class Solution {
+    public string CountAndSay(int n) {
+        
+        string num="1";
+        while(n>1)
+        {
+        char[] strToChar= num.ToCharArray();
+        int length= strToChar.Length;
+        StringBuilder str= new StringBuilder();
+        int count=1;
+        char temp= strToChar[0];
+        for(int i=1; i<length; i++)
+        {
+             if(strToChar[i]==strToChar[i-1])
+             {
+                 count++;
+             }
+             else
+             {
+                 
+                 str.Append(count.ToString());
+                 str.Append(temp.ToString());
+                 count=1;
+                 temp=strToChar[i];
+                 
+             }
+           
+        }
+        str.Append(count.ToString());
+        str.Append(temp.ToString());
+        num=str.ToString();
+        n--;
+        }
+        return num;
+        
+    }
+}

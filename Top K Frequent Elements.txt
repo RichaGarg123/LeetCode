@@ -1,0 +1,31 @@
+public class Solution {
+    public List<int> TopKFrequent(int[] nums, int k) {
+        List<int> freq=new List<int>();
+        int n=nums.Length;
+        int mostFreq=0;
+        Dictionary<int, int> freqDigits= new Dictionary<int, int>();
+        for(int i=0; i<n; i++)
+        {
+            if(!freqDigits.ContainsKey(nums[i]))
+            {
+                freqDigits.Add(nums[i],1);
+            }
+            else
+            {
+                int value= freqDigits[nums[i]];
+                freqDigits[nums[i]]=value+1;
+            }
+        }
+        int count=0;
+        //will sort Dictionary in descending order
+        foreach (var item in freqDigits.OrderByDescending(key => key.Value))
+	{
+	    if(count<k)
+	    {
+	    freq.Add(item.Key);
+	    count++;
+	    }
+	}
+     return  freq;
+    }
+}

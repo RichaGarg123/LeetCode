@@ -1,0 +1,49 @@
+public class Solution {
+    public int Reverse(int x) {
+        double reverse=0;
+        int INT_MAX=2147483647;
+        if(x<0)
+        {
+            x=-x;
+             while(x>0)
+            {
+                if(reverse * 10 + (x % 10) > INT_MAX)
+                {
+                reverse=0;
+                break;
+                }
+                else
+                {
+                reverse=reverse*10 +(x%10);
+                x=x/10;
+                }
+                
+            }
+            reverse=-reverse;
+            return Convert.ToInt32(reverse);
+            
+        }
+        else
+        if(x>0)
+        {
+            while(x>0)
+            {
+                if(reverse * 10 + (x % 10) > INT_MAX)
+                {
+                reverse=0;
+                break;
+                }
+                else
+                {
+                reverse=reverse*10 +(x%10);
+                x=x/10;
+                }
+                
+            }
+            return Convert.ToInt32(reverse);
+        }
+        
+        else
+        return x;
+    }
+}

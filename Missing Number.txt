@@ -1,0 +1,22 @@
+public class Solution {
+    public int MissingNumber(int[] nums) {
+        int test;
+        Dictionary<int, int> numpresent= new Dictionary<int, int>();
+        int length=nums.Length;
+        for(int i=0; i<=length; i++)
+        {
+            numpresent.Add(i,0);
+        }
+      
+       for(int i=0; i<length; i++)
+       {
+           numpresent[nums[i]]=1;
+       }
+         foreach (KeyValuePair<int, int> pair in numpresent)
+	{
+	   if(pair.Value==0)
+	    return pair.Key;
+	}
+        return 0;
+    }
+}

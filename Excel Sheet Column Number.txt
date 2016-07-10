@@ -1,0 +1,19 @@
+public class Solution {
+    public int TitleToNumber(string s) {
+        int length=s.Length;
+        int num=0;
+        char[] strToChar= s.ToCharArray();
+        if(!String.IsNullOrWhiteSpace(s))
+        {
+            for(int i=0; i<length;i++)
+            {
+                num=num*26;
+                num=num+(strToChar[i]-'A'+1);
+            }
+            return num;
+            
+        }
+        else
+        return 0;
+    }
+}

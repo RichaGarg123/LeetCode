@@ -1,0 +1,26 @@
+public class Solution {
+    public void Rotate(int[] nums, int k) {
+      //rotate the entire array, 0 to n-1
+      //rotate array from 0 to k-1
+      //rotate array from k to n-1
+      int i=0;
+      int j=0;
+      int n=nums.Length;
+     
+       Array.Reverse(nums);
+      for(i=0, j=(k%n)-1; i<=j; i++, j--)
+      {
+          int temp=nums[i];
+          nums[i]= nums[j];
+          nums[j]=temp;
+      }
+       for(i=(k%n), j=n-1; i<=j; i++, j--)
+      {
+          int temp=nums[i];
+          nums[i]= nums[j];
+          nums[j]=temp;
+      }
+    
+      
+    }
+}

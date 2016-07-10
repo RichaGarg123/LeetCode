@@ -1,0 +1,35 @@
+public class Solution {
+    public bool WordPattern(string pattern, string str) {
+        var words = str.Split(' ');
+        int flag=0;
+        char[] patToChar= pattern.ToCharArray();
+        int patternLength=pattern.Length;
+        int length=words.Length;
+        if(patternLength !=length)
+        return false;
+        Dictionary<string, char> strToPatternMap= new Dictionary<string, char>();
+        for(int i=0; i<length; i++)
+        {
+            if(!strToPatternMap.ContainsKey(words[i]) && !strToPatternMap.ContainsValue(patToChar[i]))
+            {
+                strToPatternMap[words[i]]=patToChar[i];
+            }
+            else
+            if(!strToPatternMap.ContainsKey(words[i]) && strToPatternMap.ContainsValue(patToChar[i]))
+            return false;
+            else
+            {
+                if(!(strToPatternMap[words[i]]==patToChar[i]))
+                {
+                flag=1;
+                break;
+                }
+            }
+            
+        }
+        if(flag==0)
+        return true;
+        else
+        return false;
+    }
+}

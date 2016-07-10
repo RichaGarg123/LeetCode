@@ -1,0 +1,17 @@
+public class Solution {
+    public string ReverseString(string s) {
+        if(!String.IsNullOrWhiteSpace(s))
+        {
+            char[] charToString= s.ToCharArray();
+            StringBuilder str= new StringBuilder();
+            for(int i=charToString.Length-1; i>=0; i--)
+            {
+                str.Append(charToString[i].ToString());
+            }
+            return str.ToString();
+        }
+        else
+        return s;
+        
+    }
+}

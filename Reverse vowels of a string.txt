@@ -1,0 +1,57 @@
+public class Solution {
+    public string ReverseVowels(string s) {
+        if(!String.IsNullOrWhiteSpace(s))
+        {
+            char[] charToString= s.ToCharArray();
+            int i=0;
+            int j=s.Length-1;
+            while(i<j)
+            {
+                if(isVowel(charToString[i]) && isVowel(charToString[j]))
+                {
+                    char temp;
+                    temp=charToString[i];
+                    charToString[i]=charToString[j];
+                    charToString[j]=temp;
+                 i++;
+                 j--;
+                }
+                
+                if(!isVowel(charToString[i]))
+                {
+                    i++;
+                }
+                
+                if(!isVowel(charToString[j]))
+                {
+                    j--;
+                }
+                
+            }
+            string str= new string(charToString);
+            return str;
+            
+        }
+        else
+        return s;
+        
+    }
+    public bool isVowel(char ch)
+    {
+        switch(ch)
+        {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U': return true;
+            break;
+            default: return false;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+public class Solution {
+    public int[] Intersect(int[] nums1, int[] nums2) {
+        Dictionary<int, int> nums1_freq_map= new Dictionary<int, int>();
+        Dictionary<int, int> nums2_freq_map= new Dictionary<int, int>();
+        List<int> int_nums= new List<int>();
+        List<int> finalList= new List<int>();
+        int count=0;
+        int tempLength=0;
+        Array.Sort(nums1);
+        Array.Sort(nums2);
+        int[] nums1_dist= nums1.Distinct().ToArray();
+        int[] nums2_dist= nums2. Distinct().ToArray();
+        int length1= nums1_dist.Length;
+        int length2= nums2_dist.Length;
+        tempLength=length1;
+        
+        for(int i=0; i<tempLength; i++)
+        {
+            if(nums2_dist.Contains(nums1_dist[i]))
+            {
+                int_nums.Add(nums1_dist[i]);
+            }
+        }
+       length1= nums1.Length;
+       length2= nums2.Length;
+       for(int i=0; i<length1; i++)
+       {
+           if(int_nums.Contains(nums1[i]))
+           {
+               if(!nums1_freq_map.ContainsKey(nums1[i]))
+               {
+                   nums1_freq_map.Add(nums1[i],1);
+                   count++;
+               }
+               else
+               {
+                   int value= nums1_freq_map[nums1[i]];
+               nums1_freq_map[nums1[i]]=value+1;
+               }
+           }
+       }
+       
+        for(int i=0; i<length2; i++)
+       {
+           if(int_nums.Contains(nums2[i]))
+           {
+               if(!nums2_freq_map.ContainsKey(nums2[i]))
+               nums2_freq_map.Add(nums2[i],1);
+               else
+               {
+                   int value= nums2_freq_map[nums2[i]];
+               nums2_freq_map[nums2[i]]=value+1;
+               }
+           }
+       }
+       foreach(KeyValuePair<int, int> pair in nums1_freq_map)
+       {
+           if(nums2_freq_map[pair.Key]==pair.Value)
+           {
+               for(int j=0; j<pair.Value; j++)
+               finalList.Add(pair.Key);
+           }
+           else
+           if(nums2_freq_map[pair.Key]<pair.Value)
+           {
+               for(int j=0; j<nums2_freq_map[pair.Key]; j++)
+                finalList.Add(pair.Key);
+           }
+           else
+           {
+               for(int j=0; j<pair.Value; j++)
+              finalList.Add(pair.Key); 
+           }
+       }
+       int[] arr=finalList.ToArray();
+       
+        return arr;
+    }
+}

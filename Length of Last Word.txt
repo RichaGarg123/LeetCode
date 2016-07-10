@@ -1,0 +1,46 @@
+public class Solution {
+    public int LengthOfLastWord(string s) {
+        int length=s.Length;
+        int wordLength=0;
+        
+        if(length==1 && !string.IsNullOrWhiteSpace(s))
+        return 1;
+        
+        if(string.IsNullOrWhiteSpace(s))
+        return 0;
+        
+        char[] strToChar= s.ToCharArray();
+        int spaceIndex=0;
+        for(int i=0; i<length; i++)
+        {  
+           if(strToChar[i]!=' ')
+           {
+               wordLength=0;
+           while(strToChar[i]!=' ')
+           {
+               wordLength++;
+               i++;
+               if(i==length)
+               break;
+           }
+           i--;
+           }
+           else
+           {
+            while(strToChar[i]==' ')
+            {
+                i++;
+                if(i==length)
+                break;
+            }
+            i--;
+            
+           }
+        }
+        
+       
+       
+        return wordLength;
+       
+    }
+}

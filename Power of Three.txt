@@ -1,0 +1,11 @@
+public class Solution {
+    public bool IsPowerOfThree(int n) {
+        //this technique applies for all prime n's
+        if(n<1)
+        return false;
+        //this is the max value which can be obtained in the integer range 3^x= 1162261467, for some x.
+        int max=1162261467;
+        //if n is a power of 3 which means 3^y=n, then the max defined above should be divisible by n.
+        return max%n==0;
+    }
+}

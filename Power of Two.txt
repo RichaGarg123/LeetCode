@@ -1,0 +1,11 @@
+public class Solution {
+    public bool IsPowerOfTwo(int n) {
+         //this technique applies for all prime n's
+        if(n<1)
+        return false;
+        //this is the max value which can be obtained in the integer range 2^x= 1073741824, for some x.
+        int max=1073741824;
+        //if n is a power of 2 which means 2^y=n, then the max defined above should be divisible by n.
+        return max%n==0;
+    }
+}

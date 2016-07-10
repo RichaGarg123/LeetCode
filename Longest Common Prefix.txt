@@ -1,0 +1,49 @@
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+        int n= strs.Length;
+        if(n==1)
+        return strs[0];
+        if(n==0)
+        return "";
+        StringBuilder str= new StringBuilder();
+        //first find the length of the shortest string in array
+        int shortestLength=strs[0].Length;
+        string shortestWord= string.Empty;
+        string prefix=string.Empty;
+          shortestWord=strs[0];
+        for(int i=1; i<n; i++)
+        {
+          int length= strs[i].Length;
+          if(length< shortestLength)
+          {
+              shortestLength=length;
+              shortestWord=strs[i];
+          }
+        }
+        prefix=shortestWord;
+        int plength= shortestLength;
+        for(int i=0; i<n; i++)
+        {
+            while(plength>0)
+            {
+                string sub= strs[i].Substring(0,plength);
+                string subprefix= prefix.Substring(0, plength);
+                if(sub.Equals(subprefix, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    prefix= subprefix;
+                    break;
+                }
+                else
+                {
+                    plength--;
+                }
+                
+            }
+           
+        }
+         if(plength==0 && prefix.Equals(shortestWord, StringComparison.InvariantCultureIgnoreCase))
+            return "";
+        return prefix;
+        
+    }
+}

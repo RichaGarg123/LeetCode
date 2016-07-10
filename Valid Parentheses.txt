@@ -1,0 +1,26 @@
+public class Solution {
+    public bool IsValid(string str) {
+        char[] strToChar= str.ToCharArray();
+        Stack<char> s= new Stack<char>();
+        int n=strToChar.Length;
+        for(int i=0; i<n; i++)
+        {
+            if(strToChar[i]=='(' ||strToChar[i]=='{' || strToChar[i]=='['  )
+            s.Push(strToChar[i]);
+            if(strToChar[i]==')' ||strToChar[i]=='}' || strToChar[i]==']' )
+            {
+                if(s.Count==0)
+                return false;
+                
+                char temp= s.Pop();
+                if(!((strToChar[i]==')' && temp=='(')|| (strToChar[i]=='}' && temp=='{') || (strToChar[i]==']' && temp=='[')))
+                return false;
+            }
+        }
+        if(s.Count>0)
+        return false;
+        else
+        return true;
+        
+    }
+}

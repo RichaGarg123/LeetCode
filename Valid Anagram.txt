@@ -1,0 +1,25 @@
+public class Solution {
+    public bool IsAnagram(string s, string t) {
+        if(string.IsNullOrWhiteSpace(s) && string.IsNullOrWhiteSpace(t))
+        return true;
+        else if(!string.IsNullOrWhiteSpace(s) && string.IsNullOrWhiteSpace(t))
+        return false;
+        else if (string.IsNullOrWhiteSpace(s) && !string.IsNullOrWhiteSpace(t))
+        return false;
+        else if(s.Length != t.Length)
+        return false;
+        else
+        {
+            char[] sToChar= s.ToCharArray();
+            Array.Sort(sToChar);
+            string sfinal= new string(sToChar);
+            char[] tToChar=t.ToCharArray();
+            Array.Sort(tToChar);
+            string tfinal= new string(tToChar);
+            if(sfinal==tfinal)
+            return true;
+            else return false;
+            
+        }
+    }
+}

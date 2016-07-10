@@ -1,0 +1,58 @@
+public class Solution {
+    public int RomanToInt(string s) {
+       int num=0;
+       int last=0;
+       
+       char[] strToChar= s.ToCharArray();
+       num=Roman(strToChar[strToChar.Length-1].ToString());
+       last=Roman(strToChar[strToChar.Length-1].ToString());
+       for(int i=strToChar.Length-2; i>=0; i--)
+       {
+       int temp=Roman(strToChar[i].ToString()); 
+       if(temp<last)
+       num=num-temp;
+       else
+       num=num+temp;
+       last=temp;
+       
+       }
+       return num;
+        
+    }
+    public int Roman(string substring)
+    {
+        int digit=0;
+        switch(substring)
+        {
+            case "I":digit+=1;
+                     break;
+            case "IV": digit+=4;
+                    break;
+            case "V": digit+= 5;
+                      break;
+            case "IX": digit+=9;
+                       break;
+            case "X": digit+=10;
+                      break;
+            case "XL": digit+=40;
+                       break;
+            case "L": digit+=50;
+                      break;
+            case "XC": digit+=90;
+                       break;
+            case "C": digit+=100;
+                      break;
+            case "CD": digit+=400;
+                       break;
+            case "D": digit+=500;
+                      break;
+            case "CM": digit+=900;
+                       break;
+            case "M": digit+=1000;
+                      break;
+           
+            
+        }
+        return digit;
+    }
+}
